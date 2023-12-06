@@ -1,0 +1,25 @@
+{
+  "name": "http-request",
+  "version": "1.0.0",
+  "description": "http request",
+  "scripts": {
+    "dev": "parcel src/*.html --no-cache",
+    "build": "parcel build src/*.html --no-cache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Allovallo/http-request.git"
+  },
+  "author": "Allovallo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Allovallo/http-request/issues"
+  },
+  "homepage": "https://github.com/Allovallo/http-request#readme",
+  "devDependencies": {
+    "parcel": "^2.10.3"
+  },
+  "dependencies": {
+    "parcel-plugin-nuke-dist": "^1.0.1"
+  }
+}
