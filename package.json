@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/Allovallo/http-request#readme",
   "devDependencies": {
-    "parcel": "^2.10.3"
+    "parcel": "^2.10.3",
+    "parcel-transformer-hbs": "^1.0.4"
   },
   "dependencies": {
+    "handlebars": "^4.7.8",
     "parcel-plugin-nuke-dist": "^1.0.1"
   }
 }
