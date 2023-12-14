@@ -3,19 +3,29 @@ import pokemonCardTpl from '../templates/pokemon-card.hbs';
 
 const refs = {
   cardContainer: document.querySelector('.js-card-container'),
+  searchForm: document.querySelector('.js-search-form'),
 };
 
-fetchPokemon()
-  .then(renderPokemonCard)
-  .catch(error => console.log(error));
+refs.searchForm.addEventListener('submit', onSearch);
 
-function fetchPokemon() {
-  return fetch('https://pokeapi.co/api/v2/pokemon/2').then(response => {
-    return response.json();
-  });
+function onSearch(e) {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const searchQuery = form.elements.query.value;
+
+  fetchPokemon(searchQuery)
+    .then(renderPokemonCard)
+    .catch(onFetchError)
+    .finally(() => form.reset());
 }
 
-function renderPokemonCard(pokemon) {
-  const markup = pokemonCardTpl(pokemon);
-  refs.cardContainer.innerHTML = markup;
+function fetchPokemon(pokemonId) {
+  const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
+
+  return fetch(url).then(response => response.json());
+}
+
+function onFetchError(error) {
+  alert('Щось пійшло не так, ми не знайшли вашого покемона(');
 }
