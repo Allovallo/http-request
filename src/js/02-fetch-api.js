@@ -7,10 +7,10 @@ const refs = getRefs();
 
 refs.searchForm.addEventListener('submit', onSearch);
 
-function onSearch(e) {
-  e.preventDefault();
+function onSearch(event) {
+  event.preventDefault();
 
-  const form = e.currentTarget;
+  const form = event.currentTarget;
   const searchQuery = form.elements.query.value;
 
   API.fetchPokemon(searchQuery)
@@ -19,30 +19,11 @@ function onSearch(e) {
     .finally(() => form.reset());
 }
 
+function onFetchError(error) {
+  alert('Щось пійшло не так, ми не знайшли вашого покемона!!!');
+}
+
 function renderPokemonCard(pokemon) {
   const markup = pokemonCardTpl(pokemon);
   refs.cardContainer.innerHTML = markup;
 }
-
-function onFetchError(error) {
-  alert('Щось пійшло не так, ми не знайшли вашого покемона(');
-}
-
-// ======================================
-
-// fetch(
-//   'https://pixabay.com/api/?key=4823621-792051e21e56534e6ae2e472f&q=yellow+flowers&image_type=photo',
-// )
-//   .then(r => r.json)
-//   .then(console.log);
-
-const url = 'https://newsapi.org/v2/everything?q=cars';
-const options = {
-  headers: {
-    Authorization: 'API_KEY',
-  },
-};
-
-fetch(url, options)
-  .then(r => r.json)
-  .then(console.log);
